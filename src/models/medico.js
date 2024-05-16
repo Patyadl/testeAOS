@@ -21,6 +21,4 @@ const Medico = sequelize.define('Medico', {
 
 });
 
-Medico.hasMany(Consulta);
-
 module.exports = Medico;
