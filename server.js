@@ -1,9 +1,9 @@
 const express = require('express');
 const consultaRoutes = require('./src/routes/consultaRoutes');
-const hospitalRoutes = require('./routes/hospitalRoutes');
-//const medicoRoutes = require('./routes/medicoRoutes');
+const hospitalRoutes = require('./src/routes/hospitalRoutes');
+//const medicoRoutes = require('./src/routes/medicoRoutes');
 const pacienteRoutes = require('./src/routes/pacienteRoutes')
-//const prescricaoRoutes = require('./routes/prescricaoRoutes');
+//const prescricaoRoutes = require('./src/routes/prescricaoRoutes');
 
 const app = express();
 
