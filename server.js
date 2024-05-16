@@ -1,7 +1,7 @@
 const express = require('express');
 const consultaRoutes = require('./src/routes/consultaRoutes');
 const hospitalRoutes = require('./src/routes/hospitalRoutes');
-//const medicoRoutes = require('./src/routes/medicoRoutes');
+const medicoRoutes = require('./src/routes/medicoRoutes');
 const pacienteRoutes = require('./src/routes/pacienteRoutes')
 //const prescricaoRoutes = require('./src/routes/prescricaoRoutes');
 
@@ -13,7 +13,7 @@ app.use(express.json());
 // Rotas para cada entidade
 app.use('/consulta', consultaRoutes);
 app.use('/hospital', hospitalRoutes);
-//app.use('/medico', medicoRoutes);
+app.use('/medico', medicoRoutes);
 app.use('/paciente', pacienteRoutes);
 //app.use('/prescricao', prescricaoRoutes);
 

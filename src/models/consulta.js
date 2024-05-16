@@ -25,4 +25,6 @@ const Consulta = sequelize.define('Consulta', {
   // Adicione outros campos conforme necessário
 });
 
+Consulta.belongsTo(Medico);
+
 module.exports = Consulta;
