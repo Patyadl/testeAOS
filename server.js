@@ -2,7 +2,7 @@ const express = require('express');
 const consultaRoutes = require('./src/routes/consultaRoutes');
 //const hospitalRoutes = require('./routes/hospitalRoutes');
 //const medicoRoutes = require('./routes/medicoRoutes');
-//const pacienteRoutes = require('./routes/pacienteRoutes');
+const pacienteRoutes = require('./src/routes/pacienteRoutes')
 //const prescricaoRoutes = require('./routes/prescricaoRoutes');
 
 const app = express();
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use('/consulta', consultaRoutes);
 //app.use('/hospital', hospitalRoutes);
 //app.use('/medico', medicoRoutes);
-//app.use('/paciente', pacienteRoutes);
+app.use('/paciente', pacienteRoutes);
 //app.use('/prescricao', prescricaoRoutes);
 
 // Porta para o servidor ou porta padrão 3000
