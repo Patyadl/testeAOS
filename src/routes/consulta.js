@@ -1,7 +1,7 @@
 // consulta.js
 
 import { Router } from "express";
-
+import { v4 as uuidv4, validate } from 'uuid';
 const router = Router();
 
 router.get("/", async (req, res) => {
@@ -25,6 +25,17 @@ router.post("/", async (req, res) => {
   const consulta = await req.context.models.Consulta.create(req.body);
 
   return res.send(consulta);
+  
+  const c = await req.context.models.Line.create({
+    id: uuidv4(),
+    medico_id,
+    hospital_id,
+paciente_id,
+data,
+status
+  });
+
+  res.send(c)
 });
 
 router.put("/:consultaId", async (req, res) => {

@@ -1,24 +1,17 @@
-import Sequelize from "sequelize";
-import getConsultaModel from "./consulta";
-import getHospitalModel from "./hospital";
-import getMedicoModel from "./medico";
-import getPacienteModel from "./paciente";
-import getPrescricaoModel from "./prescricao";
+import Sequelize from 'sequelize';
+import getConsultaModel from './consulta.js';
+import getHospitalModel from './hospital.js';
+import getMedicoModel from './medico.js';
+import getPacienteModel from './paciente.js';
+import getPrescricaoModel from './prescricao.js';
 
-// Carrega variáveis de ambiente do arquivo .env
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 dotenv.config();
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: "postgres",
-  protocol: "postgres",
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false, // Use isso somente se o servidor não tiver um certificado SSL autoassinado
-    },
-  },
+  dialect: 'postgres',  // Adiciona o dialeto PostgreSQL
 });
+
 
 const models = {
   Consulta: getConsultaModel(sequelize, Sequelize),
@@ -26,11 +19,10 @@ const models = {
   Medico: getMedicoModel(sequelize, Sequelize),
   Paciente: getPacienteModel(sequelize, Sequelize),
   Prescricao: getPrescricaoModel(sequelize, Sequelize),
-
 };
 
 Object.keys(models).forEach((key) => {
-  if ("associate" in models[key]) {
+  if ('associate' in models[key]) {
     models[key].associate(models);
   }
 });

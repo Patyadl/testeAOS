@@ -1,8 +1,8 @@
-import consulta from "./consulta";
-import hospital from "./hospital";
-import medico from "./medico";
-import paciente from "./paciente";
-import prescricao from "./prescricao";
+import consulta from './consulta.js';
+import hospital from './hospital.js';
+import medico from './medico.js';
+import paciente from './paciente.js';
+import prescricao from './prescricao.js';
 
 export const routes = {
   consulta,
@@ -11,3 +11,5 @@ export const routes = {
   paciente,
   prescricao
 };
+
+export default routes;

@@ -1,7 +1,14 @@
 // consulta.js
 
+import { type } from "os";
+
 const getConsultaModel = (sequelize, { DataTypes }) => {
   const Consulta = sequelize.define("consulta", {
+    id: {
+     type: DataTypes.UUID,
+     primaryKey: true,
+     allowNull: false
+    },
     data: {
       type: DataTypes.DATE,
       allowNull: false,
