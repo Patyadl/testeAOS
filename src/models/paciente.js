@@ -1,32 +1,43 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('./index');
+// paciente.js
 
-const Paciente = sequelize.define('Paciente', {
-  nome: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  idade: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  sexo: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  endereco: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  telefone: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  historico: {
-    type: DataTypes.TEXT,
-    allowNull: true
-  }
-  
-});
+const getPacienteModel = (sequelize, { DataTypes }) => {
+  const Paciente = sequelize.define("paciente", {
+    nome: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    idade: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 0,
+      },
+    },
+    endereco: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    telefone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    // Outros campos como sexo, data de nascimento, etc.
+  });
 
-module.exports = Paciente;
+  Paciente.associate = (models) => {
+    Paciente.hasMany(models.Consulta);
+  };
+
+  return Paciente;
+};
+
+export default getPacienteModel;

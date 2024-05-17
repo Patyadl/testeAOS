@@ -1,28 +1,33 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('./index');
+// consulta.js
 
-const Consulta = sequelize.define('Consulta', {
-  data: {
-    type: DataTypes.DATE,
-    allowNull: false
-  },
-  motivo: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  sintomas: {
-    type: DataTypes.TEXT,
-    allowNull: true
-  },
-  diagnostico: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  observacoes: {
-    type: DataTypes.TEXT,
-    allowNull: true
-  },
-  
-});
+const getConsultaModel = (sequelize, { DataTypes }) => {
+  const Consulta = sequelize.define("consulta", {
+    data: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        isDate: true,
+      },
+    },
+    status: {
+      type: DataTypes.ENUM('Agendada', 'Realizada', 'Cancelada'),
+      allowNull: false,
+      defaultValue: 'Agendada',
+    },
+    descricao: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    // Outros campos como resultado, diagnóstico, etc.
+  });
 
-module.exports = Consulta;
+  Consulta.associate = (models) => {
+    Consulta.belongsTo(models.Medico);
+    Consulta.belongsTo(models.Paciente);
+    Consulta.belongsTo(models.Hospital);
+  };
+
+  return Consulta;
+};
+
+export default getConsultaModel;

@@ -1,25 +1,36 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('./index');
+// hospital.js
 
-const Hospital = sequelize.define('Hospital', {
-  
-  nome: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  endereco: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  telefone: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  historico: {
-    type: DataTypes.TEXT,
-    allowNull: true
-  }
-  
-});
+const getHospitalModel = (sequelize, { DataTypes }) => {
+  const Hospital = sequelize.define("hospital", {
+    nome: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    localizacao: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    telefone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    // Outros campos como tipo de hospital, capacidade, etc.
+  });
 
-module.exports = Hospital;
+  Hospital.associate = (models) => {
+    Hospital.hasMany(models.Consulta);
+  };
+
+  return Hospital;
+};
+
+export default getHospitalModel;

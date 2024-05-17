@@ -1,24 +1,38 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('./index');
+// medico.js
 
-const Medico = sequelize.define('Medico', {
-  nome: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  CRM:{
-    type: DataTypes.STRING,
-    allowNull:false
-  },
-  especialidade: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  telefone: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
+const getMedicoModel = (sequelize, { DataTypes }) => {
+  const Medico = sequelize.define("medico", {
+    nome: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    especialidade: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    crm: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    // Outros campos como email, telefone, etc.
+  });
 
-});
+  Medico.associate = (models) => {
+    Medico.hasMany(models.Consulta);
+    Medico.hasMany(models.Prescricao);
+  };
 
-module.exports = Medico;
+  return Medico;
+};
+
+export default getMedicoModel;
