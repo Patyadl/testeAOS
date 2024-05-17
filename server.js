@@ -10,6 +10,11 @@ const app = express();
 // Middleware para lidar com dados em JSON
 app.use(express.json());
 
+// Endpoint inicial
+app.get('/', (req, res) => {
+  res.send('Bem-vindo ao sistema de gestão hospitalar!');
+});
+
 // Rotas para cada entidade
 app.use('/consulta', consultaRoutes);
 app.use('/hospital', hospitalRoutes);
