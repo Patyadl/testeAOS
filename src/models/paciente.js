@@ -26,7 +26,7 @@ const Paciente = sequelize.define('Paciente', {
     type: DataTypes.TEXT,
     allowNull: true
   }
-  // Adicione outros campos conforme necessário
+  
 });
 
 module.exports = Paciente;

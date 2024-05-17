@@ -19,7 +19,7 @@ const Prescricao = sequelize.define('Prescricao', {
     type: DataTypes.STRING,
     allowNull: true
   }
-  // Adicione outros campos conforme necessário
+  
 });
 
 module.exports = Prescricao;

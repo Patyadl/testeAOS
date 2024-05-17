@@ -19,7 +19,7 @@ const Hospital = sequelize.define('Hospital', {
     type: DataTypes.TEXT,
     allowNull: true
   }
-  // Adicione outros campos conforme necessário
+  
 });
 
 module.exports = Hospital;

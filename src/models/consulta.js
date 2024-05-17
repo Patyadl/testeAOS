@@ -22,7 +22,7 @@ const Consulta = sequelize.define('Consulta', {
     type: DataTypes.TEXT,
     allowNull: true
   },
-  // Adicione outros campos conforme necessário
+  
 });
 
 module.exports = Consulta;

@@ -4,16 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --exec babel-node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+  "expressjs",
+  "babel",
+  "nodejs"
+],
+  "author": "Tary Junior <tary.00000847942@unicap.br>",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "pg": "^8.11.5",
     "sequelize": "^6.37.3",
-    "sequelize-cli": "^6.6.2"
+    "sequelize-cli": "^6.6.2",
+    "uuid": "^9.0.1",
+    "cors": "^2.8.5"
+    
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/node": "^7.23.9",
+    "@babel/preset-env": "^7.24.0",
+    "nodemon": "^3.1.0"
   }
 }
