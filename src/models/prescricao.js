@@ -1,5 +1,3 @@
-// prescricao.js
-
 const getPrescricaoModel = (sequelize, { DataTypes }) => {
   const Prescricao = sequelize.define("prescricao", {
     medicamento: {
